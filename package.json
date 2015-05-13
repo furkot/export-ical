@@ -1,0 +1,31 @@
+{
+  "name": "furkot-ical",
+  "version": "0.0.0",
+  "description": "Generate iCalendar file from Furkot trip data.",
+  "homepage": "https://trips.furkot.com",
+  "author": {
+    "name": "Damian Krzeminski",
+    "email": "pirxpilot@code42day.com",
+    "url": "https://code42day.com"
+  },
+  "repository": "furkot/furkot-ical",
+  "license": "MIT",
+  "keywords": [
+    "furkot-ical",
+    "furkot",
+    "roadtrip",
+    "export",
+    "planner",
+    "calendar",
+    "iCal"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "^2.7.0",
+    "mocha": "^2.2.4",
+    "should": "^6.0.1"
+  },
+  "scripts": {
+    "test": "make check"
+  }
+}
