@@ -19,7 +19,9 @@
     "calendar",
     "iCal"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "icalendar": "code42day/node-icalendar.git#furkot-1"
+  },
   "devDependencies": {
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
