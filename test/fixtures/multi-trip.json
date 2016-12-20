@@ -12,8 +12,9 @@
       "link": "https://trips.furkot.com"
     }
   },
-  "routes": [ {
-    "points": [
+  "routes": [
+    {
+      "points": [
         {
           "id": "5144eae2d6e4d26079000002",
           "day": 0,
@@ -111,7 +112,8 @@
           "arrival_time": 1366804087000,
           "departure_time": 1366887600000,
           "symbol": "Lodging"
-        }, {
+        },
+        {
           "id": "5144eae2d6e4d26079000003",
           "day": 0,
           "name": "Killington, VT",
@@ -135,7 +137,9 @@
           "nights": 0,
           "arrival_time": 1366894909000,
           "departure_time": 1366894909000
-        } ],
-    "name": "Ski trip"
-  } ]
+        }
+      ],
+      "name": "Ski trip"
+    }
+  ]
 }

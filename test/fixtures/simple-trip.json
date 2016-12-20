@@ -35,7 +35,8 @@
           "nights": 0,
           "arrival_time": 1373274000000,
           "departure_time": 1373274000000
-        }, {
+        },
+        {
           "id": "5144f7cbd6e4d26079000009",
           "day": 0,
           "name": "Redding",
@@ -58,7 +59,8 @@
           "nights": 0,
           "arrival_time": 1373285580000,
           "departure_time": 1373286480000
-        }, {
+        },
+        {
           "id": "5144f7dfd6e4d2607900000a",
           "day": 0,
           "name": "Lane",
@@ -83,7 +85,8 @@
           "arrival_time": 1373304660000,
           "departure_time": 1373305560000,
           "symbol": "Gas Station"
-        }, {
+        },
+        {
           "id": "5144f7bed6e4d26079000008",
           "day": 0,
           "name": "Portland",
