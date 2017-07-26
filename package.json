@@ -20,7 +20,7 @@
     "iCal"
   ],
   "dependencies": {
-    "code42day-icalendar": "0.6.4"
+    "@pirxpilot/icalendar": "~0"
   },
   "devDependencies": {
     "jshint": "~2",
