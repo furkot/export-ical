@@ -1,4 +1,9 @@
 
+1.0.3 / 2017-07-25
+==================
+
+ * replace code42day-icalendar with @pirxpilot/icalendar
+
 1.0.2 / 2016-12-19
 ==================
 

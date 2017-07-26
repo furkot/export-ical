@@ -1,6 +1,6 @@
 {
   "name": "furkot-ical",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate iCalendar file from Furkot trip data.",
   "homepage": "https://trips.furkot.com",
   "author": {
@@ -30,7 +30,7 @@
   "scripts": {
     "test": "make check"
   },
- "files": [
+  "files": [
     "index.js",
     "lib"
   ]
