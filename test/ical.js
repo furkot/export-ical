@@ -12,7 +12,7 @@ function readFileSync(name) {
  */
 function compareLines(actual, expected) {
   function notStamp(line) {
-    return line.slice(0, 'DTSTAMP'.length) !== 'DTSTAMP';
+    return !line.startsWith('DTSTAMP');
   }
 
   actual = actual.split('\r\n').filter(notStamp);

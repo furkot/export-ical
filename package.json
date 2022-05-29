@@ -20,7 +20,8 @@
     "iCal"
   ],
   "dependencies": {
-    "@pirxpilot/icalendar": "~0"
+    "@pirxpilot/icalendar": "~0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "jshint": "~2",
