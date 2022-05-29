@@ -1,10 +1,10 @@
-var ical = require('../');
+const ical = require('../');
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 function readFileSync(name) {
-  return fs.readFileSync(path.join(__dirname, name), 'utf8');
+  return fs.readFileSync(path.resolve(__dirname, name), 'utf8');
 }
 
 /**
@@ -15,14 +15,12 @@ function compareLines(actual, expected) {
     return line.slice(0, 'DTSTAMP'.length) !== 'DTSTAMP';
   }
 
-  var i;
-
   actual = actual.split('\r\n').filter(notStamp);
   expected = expected.split('\r\n').filter(notStamp);
 
   actual.should.have.length(expected.length);
 
-  for(i = 0; i < actual.length; i += 1) {
+  for(let i = 0; i < actual.length; i += 1) {
     actual[i].should.eql(expected[i]);
   }
 }
@@ -31,17 +29,17 @@ function compareLines(actual, expected) {
 describe('furkot-ical node module', function () {
 
   it('simple trip', function() {
-    var t = require('./fixtures/simple-trip.json'),
-      generated = ical(t),
-      expected = readFileSync('fixtures/simple.ics');
+    const t = require('./fixtures/simple-trip.json');
+    const generated = ical(t);
+    const expected = readFileSync('fixtures/simple.ics');
 
     compareLines(generated, expected);
   });
 
   it('multi trip', function() {
-    var t = require('./fixtures/multi-trip.json'),
-      generated = ical(t),
-      expected = readFileSync('fixtures/multi.ics');
+    const t = require('./fixtures/multi-trip.json');
+    const generated = ical(t);
+    const expected = readFileSync('fixtures/multi.ics');
 
     compareLines(generated, expected);
   });
