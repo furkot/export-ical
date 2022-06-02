@@ -1,5 +1,5 @@
 {
-  "name": "furkot-ical",
+  "name": "@furkot/export-ical",
   "version": "1.0.3",
   "description": "Generate iCalendar file from Furkot trip data.",
   "homepage": "https://trips.furkot.com",
@@ -8,7 +8,7 @@
     "email": "pirxpilot@code42day.com",
     "url": "https://code42day.com"
   },
-  "repository": "furkot/furkot-ical",
+  "repository": "furkot/export-ical",
   "license": "MIT",
   "keywords": [
     "furkot-ical",
