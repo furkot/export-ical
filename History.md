@@ -1,4 +1,12 @@
 
+2.0.0 / 2022-06-02
+==================
+
+ * rename project to @furkot/ical
+ * skip stops without id
+ * rewrite as a generator
+ * use uuid to generate stop ids
+
 1.0.3 / 2017-07-25
 ==================
 
