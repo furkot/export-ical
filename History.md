@@ -1,4 +1,9 @@
 
+2.0.1 / 2022-06-06
+==================
+
+ * skip empty and endefined properties when generating ICS
+
 2.0.0 / 2022-06-02
 ==================
 
