@@ -33,7 +33,7 @@ function compareLines(actual, expected) {
 }
 
 
-describe('furkot-ical node module', function () {
+describe('ical', function () {
 
   it('simple trip', function() {
     const t = require('./fixtures/simple-trip.json');
