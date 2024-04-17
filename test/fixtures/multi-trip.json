@@ -88,6 +88,20 @@
           "departure_time": 1366802673000
         },
         {
+          "id": "5144eb49d6e4d26079000006",
+          "day": 0,
+          "coordinates": {
+            "lat": 43.6647222,
+            "lon": -72.79333329999997
+          },
+          "visit_duration": 0,
+          "distance": 0,
+          "driving": 0,
+          "nights": 0,
+          "arrival_time": 1366802673000,
+          "departure_time": 1366802673000
+        },
+        {
           "id": "5144eaefd6e4d26079000004:1",
           "day": 1,
           "name": "Courtyard by Marriott",
