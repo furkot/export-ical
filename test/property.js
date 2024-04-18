@@ -1,3 +1,4 @@
+const { describe, it } = require('node:test');
 const property = require('../lib/property');
 
 /* global TextDecoder */
@@ -5,7 +6,7 @@ const decoder = new TextDecoder();
 
 describe('property', function () {
 
-  it('short', function() {
+  it('short', function () {
     const p = property('abc', 'ąbć');
 
     const { value, done } = p.next();
@@ -16,7 +17,7 @@ describe('property', function () {
     p.next().done.should.equal(true);
   });
 
-  it('long', function() {
+  it('long', function () {
     const p = property('A', 'a'.repeat(100));
 
     const values = Array.from(p);
@@ -30,7 +31,7 @@ describe('property', function () {
     strings[1].should.equal(` ${'a'.repeat(27)}\r\n`);
   });
 
-  it('very long', function() {
+  it('very long', function () {
     const p = property('A', 'a'.repeat(300));
 
     const strings = Array.from(p).map(s => decoder.decode(s));
@@ -43,7 +44,7 @@ describe('property', function () {
     strings[4].should.equal(` ${'a'.repeat(5)}\r\n`);
   });
 
-  it('long with multibyte', function() {
+  it('long with multibyte', function () {
     const p = property('A', 'ą'.repeat(100));
 
     const strings = Array.from(p).map(s => decoder.decode(s));
@@ -54,7 +55,7 @@ describe('property', function () {
     strings[2].should.equal(` ${'ą'.repeat(100 - 37 - 36)}\r\n`);
   });
 
-  it('long with emoji', function() {
+  it('long with emoji', function () {
     const p = property('A', '🌻'.repeat(100));
 
     const strings = Array.from(p).map(s => decoder.decode(s));
