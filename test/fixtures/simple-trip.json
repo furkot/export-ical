@@ -34,7 +34,10 @@
           "visit_duration": 0,
           "nights": 0,
           "arrival_time": 1373274000000,
-          "departure_time": 1373274000000
+          "departure_time": 1373274000000,
+          "timezone": {
+            "name": "America/Los_Angeles"
+          }
         },
         {
           "id": "5144f7cbd6e4d26079000009",
@@ -58,7 +61,10 @@
           "driving": 11580,
           "nights": 0,
           "arrival_time": 1373285580000,
-          "departure_time": 1373286480000
+          "departure_time": 1373286480000,
+          "timezone": {
+            "name": "America/Los_Angeles"
+          }
         },
         {
           "id": "5144f7dfd6e4d2607900000a",
@@ -84,6 +90,9 @@
           "nights": 0,
           "arrival_time": 1373304660000,
           "departure_time": 1373305560000,
+          "timezone": {
+            "name": "America/Los_Angeles"
+          },
           "symbol": "Gas Station"
         },
         {
@@ -108,7 +117,10 @@
           "driving": 6595,
           "nights": 0,
           "arrival_time": 1373312155000,
-          "departure_time": 1373312155000
+          "departure_time": 1373312155000,
+          "timezone": {
+            "name": "America/Los_Angeles"
+          }
         }
       ],
       "name": ""
