@@ -1,4 +1,5 @@
 const { describe, it } = require('node:test');
+const assert = require('node:assert/strict');
 const ical = require('../');
 
 const fs = require('fs');
@@ -21,16 +22,16 @@ function compareLines(actual, expected) {
 
   actual = Array.from(actual).map(x => decoder.decode(x)).join('');
 
-  actual.should.endWith('\r\n');
+  assert(actual.endsWith('\r\n'), `${actual.slice(-10)} should end with \\r\\n`);
 
   actual = actual.split('\r\n').filter(notStamp);
   expected = expected.split('\r\n').filter(notStamp);
 
   for (let i = 0; i < actual.length; i += 1) {
-    actual[i].should.eql(expected[i], `line: ${i}`);
+    assert.equal(actual[i], expected[i], `line: ${i}`);
   }
 
-  actual.should.have.length(expected.length);
+  assert.equal(actual.length, expected.length, 'line count');
 }
 
 

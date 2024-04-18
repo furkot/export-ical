@@ -1,4 +1,5 @@
 const { describe, it } = require('node:test');
+const assert = require('node:assert/strict');
 const property = require('../lib/property');
 
 /* global TextDecoder */
@@ -11,10 +12,9 @@ describe('property', function () {
 
     const { value, done } = p.next();
 
-    done.should.equal(false);
-    decoder.decode(value).should.equal('abc:ąbć\r\n');
-
-    p.next().done.should.equal(true);
+    assert.equal(done, false, 'done should be false');
+    assert.equal(decoder.decode(value), 'abc:ąbć\r\n');
+    assert.deepEqual(p.next(), { value: undefined, done: true }, 'no more values');
   });
 
   it('long', function () {
@@ -22,13 +22,12 @@ describe('property', function () {
 
     const values = Array.from(p);
 
-    values.should.have.length(2);
+    assert.equal(values.length, 2, 'values should have length 2');
     // 75 octets + \r\n
-    values[0].should.have.length(75 + 2);
-
+    assert.equal(values[0].length, 75 + 2);
     const strings = values.map(v => decoder.decode(v));
-    strings[0].should.equal(`A:${'a'.repeat(73)}\r\n`);
-    strings[1].should.equal(` ${'a'.repeat(27)}\r\n`);
+    assert.equal(strings[0], `A:${'a'.repeat(73)}\r\n`);
+    assert.equal(strings[1], ` ${'a'.repeat(27)}\r\n`);
   });
 
   it('very long', function () {
@@ -36,12 +35,12 @@ describe('property', function () {
 
     const strings = Array.from(p).map(s => decoder.decode(s));
 
-    strings.should.have.length(5);
-    strings[0].should.equal(`A:${'a'.repeat(73)}\r\n`);
-    strings[1].should.equal(` ${'a'.repeat(74)}\r\n`);
-    strings[2].should.equal(` ${'a'.repeat(74)}\r\n`);
-    strings[3].should.equal(` ${'a'.repeat(74)}\r\n`);
-    strings[4].should.equal(` ${'a'.repeat(5)}\r\n`);
+    assert.equal(strings.length, 5, 'strings should have length 5');
+    assert.equal(strings[0], `A:${'a'.repeat(73)}\r\n`);
+    assert.equal(strings[1], ` ${'a'.repeat(74)}\r\n`);
+    assert.equal(strings[2], ` ${'a'.repeat(74)}\r\n`);
+    assert.equal(strings[3], ` ${'a'.repeat(74)}\r\n`);
+    assert.equal(strings[4], ` ${'a'.repeat(5)}\r\n`);
   });
 
   it('long with multibyte', function () {
@@ -49,10 +48,10 @@ describe('property', function () {
 
     const strings = Array.from(p).map(s => decoder.decode(s));
 
-    strings.should.have.length(3);
-    strings[0].should.equal(`A:${'ą'.repeat(36)}\r\n`);
-    strings[1].should.equal(` ${'ą'.repeat(37)}\r\n`);
-    strings[2].should.equal(` ${'ą'.repeat(100 - 37 - 36)}\r\n`);
+    assert.equal(strings.length, 3, 'strings should have length 3');
+    assert.equal(strings[0], `A:${'ą'.repeat(36)}\r\n`);
+    assert.equal(strings[1], ` ${'ą'.repeat(37)}\r\n`);
+    assert.equal(strings[2], ` ${'ą'.repeat(100 - 37 - 36)}\r\n`);
   });
 
   it('long with emoji', function () {
@@ -60,12 +59,12 @@ describe('property', function () {
 
     const strings = Array.from(p).map(s => decoder.decode(s));
 
-    strings.should.have.length(6);
-    strings[0].should.equal(`A:${'🌻'.repeat(18)}\r\n`);
-    strings[1].should.equal(` ${'🌻'.repeat(18)}\r\n`);
-    strings[2].should.equal(` ${'🌻'.repeat(18)}\r\n`);
-    strings[3].should.equal(` ${'🌻'.repeat(18)}\r\n`);
-    strings[4].should.equal(` ${'🌻'.repeat(18)}\r\n`);
-    strings[5].should.equal(` ${'🌻'.repeat(100 - 5 * 18)}\r\n`);
+    assert.equal(strings.length, 6, 'strings should have length 6');
+    assert.equal(strings[0], `A:${'🌻'.repeat(18)}\r\n`);
+    assert.equal(strings[1], ` ${'🌻'.repeat(18)}\r\n`);
+    assert.equal(strings[2], ` ${'🌻'.repeat(18)}\r\n`);
+    assert.equal(strings[3], ` ${'🌻'.repeat(18)}\r\n`);
+    assert.equal(strings[4], ` ${'🌻'.repeat(18)}\r\n`);
+    assert.equal(strings[5], ` ${'🌻'.repeat(100 - 5 * 18)}\r\n`);
   });
 });
