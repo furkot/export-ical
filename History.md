@@ -1,4 +1,9 @@
 
+2.0.4 / 2024-04-18
+==================
+
+ * distinguish subsequent nights of a multinight stop
+
 2.0.3 / 2024-04-18
 ==================
 
