@@ -45,6 +45,14 @@ describe('ical', function () {
     compareLines(generated, expected);
   });
 
+  it('simple trip with TZID', function () {
+    const t = require('./fixtures/simple-trip.json');
+    const generated = ical({ ...t, options: { tzid: true } });
+    const expected = readFileSync('fixtures/simple_tz.ics');
+
+    compareLines(generated, expected);
+  });
+
   it('multi trip', function () {
     const t = require('./fixtures/multi-trip.json');
     const generated = ical(t);
