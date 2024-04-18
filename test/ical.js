@@ -1,3 +1,4 @@
+const { describe, it } = require('node:test');
 const ical = require('../');
 
 const fs = require('fs');

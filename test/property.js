@@ -1,3 +1,4 @@
+const { describe, it } = require('node:test');
 const property = require('../lib/property');
 
 /* global TextDecoder */
