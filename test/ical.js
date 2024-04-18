@@ -26,7 +26,7 @@ function compareLines(actual, expected) {
   actual = actual.split('\r\n').filter(notStamp);
   expected = expected.split('\r\n').filter(notStamp);
 
-  for(let i = 0; i < actual.length; i += 1) {
+  for (let i = 0; i < actual.length; i += 1) {
     actual[i].should.eql(expected[i], `line: ${i}`);
   }
 
@@ -36,7 +36,7 @@ function compareLines(actual, expected) {
 
 describe('ical', function () {
 
-  it('simple trip', function() {
+  it('simple trip', function () {
     const t = require('./fixtures/simple-trip.json');
     const generated = ical(t);
     const expected = readFileSync('fixtures/simple.ics');
@@ -44,7 +44,7 @@ describe('ical', function () {
     compareLines(generated, expected);
   });
 
-  it('multi trip', function() {
+  it('multi trip', function () {
     const t = require('./fixtures/multi-trip.json');
     const generated = ical(t);
     const expected = readFileSync('fixtures/multi.ics');
