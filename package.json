@@ -23,7 +23,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "jshint": "~2",
+    "@pirxpilot/jshint": "~3",
     "mocha": "~10",
     "should": "~13"
   },
