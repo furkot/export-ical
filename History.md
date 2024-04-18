@@ -1,4 +1,11 @@
 
+2.0.5 / 2024-04-18
+==================
+
+ * upgrade uuid to ~9
+ * replace `mocha` with `node:test`
+ * replace jshint with @pirxpilot/jshint
+
 2.0.4 / 2024-04-18
 ==================
 
