@@ -5,9 +5,8 @@ const property = require('../lib/property');
 /* global TextDecoder */
 const decoder = new TextDecoder();
 
-describe('property', function () {
-
-  it('short', function () {
+describe('property', () => {
+  it('short', () => {
     const p = property('abc', 'ąbć');
 
     const { value, done } = p.next();
@@ -17,7 +16,7 @@ describe('property', function () {
     assert.deepEqual(p.next(), { value: undefined, done: true }, 'no more values');
   });
 
-  it('long', function () {
+  it('long', () => {
     const p = property('A', 'a'.repeat(100));
 
     const values = Array.from(p);
@@ -30,7 +29,7 @@ describe('property', function () {
     assert.equal(strings[1], ` ${'a'.repeat(27)}\r\n`);
   });
 
-  it('very long', function () {
+  it('very long', () => {
     const p = property('A', 'a'.repeat(300));
 
     const strings = Array.from(p).map(s => decoder.decode(s));
@@ -43,7 +42,7 @@ describe('property', function () {
     assert.equal(strings[4], ` ${'a'.repeat(5)}\r\n`);
   });
 
-  it('long with multibyte', function () {
+  it('long with multibyte', () => {
     const p = property('A', 'ą'.repeat(100));
 
     const strings = Array.from(p).map(s => decoder.decode(s));
@@ -54,7 +53,7 @@ describe('property', function () {
     assert.equal(strings[2], ` ${'ą'.repeat(100 - 37 - 36)}\r\n`);
   });
 
-  it('long with emoji', function () {
+  it('long with emoji', () => {
     const p = property('A', '🌻'.repeat(100));
 
     const strings = Array.from(p).map(s => decoder.decode(s));

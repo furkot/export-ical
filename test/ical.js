@@ -2,8 +2,8 @@ const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
 const ical = require('../');
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 function readFileSync(name) {
   return fs.readFileSync(path.resolve(__dirname, name), 'utf8');
@@ -20,7 +20,9 @@ function compareLines(actual, expected) {
     return !line.startsWith('DTSTAMP');
   }
 
-  actual = Array.from(actual).map(x => decoder.decode(x)).join('');
+  actual = Array.from(actual)
+    .map(x => decoder.decode(x))
+    .join('');
 
   assert(actual.endsWith('\r\n'), `${actual.slice(-10)} should end with \\r\\n`);
 
@@ -34,10 +36,8 @@ function compareLines(actual, expected) {
   assert.equal(actual.length, expected.length, 'line count');
 }
 
-
-describe('ical', function () {
-
-  it('simple trip', function () {
+describe('ical', () => {
+  it('simple trip', () => {
     const t = require('./fixtures/simple-trip.json');
     const generated = ical(t);
     const expected = readFileSync('fixtures/simple.ics');
@@ -45,12 +45,11 @@ describe('ical', function () {
     compareLines(generated, expected);
   });
 
-  it('multi trip', function () {
+  it('multi trip', () => {
     const t = require('./fixtures/multi-trip.json');
     const generated = ical(t);
     const expected = readFileSync('fixtures/multi.ics');
 
     compareLines(generated, expected);
   });
-
 });
