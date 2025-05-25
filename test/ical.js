@@ -1,15 +1,17 @@
-const { describe, it } = require('node:test');
-const assert = require('node:assert/strict');
-const ical = require('../');
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { describe, it } from 'node:test';
 
-const fs = require('node:fs');
-const path = require('node:path');
+import ical from '../lib/ical.js';
+
+import multiTrip from './fixtures/multi-trip.json' with { type: 'json' };
+import simpleTrip from './fixtures/simple-trip.json' with { type: 'json' };
 
 function readFileSync(name) {
-  return fs.readFileSync(path.resolve(__dirname, name), 'utf8');
+  return fs.readFileSync(path.resolve(import.meta.dirname, name), 'utf8');
 }
 
-/* global TextDecoder */
 const decoder = new TextDecoder();
 
 /**
@@ -38,16 +40,14 @@ function compareLines(actual, expected) {
 
 describe('ical', () => {
   it('simple trip', () => {
-    const t = require('./fixtures/simple-trip.json');
-    const generated = ical(t);
+    const generated = ical(simpleTrip);
     const expected = readFileSync('fixtures/simple.ics');
 
     compareLines(generated, expected);
   });
 
   it('multi trip', () => {
-    const t = require('./fixtures/multi-trip.json');
-    const generated = ical(t);
+    const generated = ical(multiTrip);
     const expected = readFileSync('fixtures/multi.ics');
 
     compareLines(generated, expected);

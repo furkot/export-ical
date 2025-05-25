@@ -1,8 +1,7 @@
-const { describe, it } = require('node:test');
-const assert = require('node:assert/strict');
-const property = require('../lib/property');
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import property from '../lib/property.js';
 
-/* global TextDecoder */
 const decoder = new TextDecoder();
 
 describe('property', () => {

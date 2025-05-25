@@ -15,7 +15,7 @@ $ npm install --save @furkot/export-ical
 ## Usage
 
 ```js
-var ical = require('@furkot/export-ical');
+import ical from '@furkot/export-ical';
 
 ical(trip);
 ```
