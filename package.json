@@ -25,7 +25,7 @@
     "iCal"
   ],
   "dependencies": {
-    "uuid": "~9"
+    "uuid": "~11"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4"
