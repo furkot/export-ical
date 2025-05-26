@@ -2,6 +2,8 @@
   "name": "@furkot/export-ical",
   "version": "2.0.5",
   "description": "Generate iCalendar file from Furkot trip data.",
+  "type": "module",
+  "exports": "./lib/ical.js",
   "homepage": "https://trips.furkot.com",
   "author": {
     "name": "Damian Krzeminski",
@@ -23,11 +25,10 @@
     "iCal"
   ],
   "dependencies": {
-    "uuid": "~9"
+    "uuid": "~11"
   },
   "devDependencies": {
-    "@pirxpilot/jshint": "~3",
-    "should": "~13"
+    "@biomejs/biome": "^1.9.4"
   },
   "scripts": {
     "test": "make check"

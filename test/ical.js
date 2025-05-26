@@ -1,14 +1,17 @@
-const { describe, it } = require('node:test');
-const ical = require('../');
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { describe, it } from 'node:test';
 
-const fs = require('fs');
-const path = require('path');
+import ical from '../lib/ical.js';
+
+import multiTrip from './fixtures/multi-trip.json' with { type: 'json' };
+import simpleTrip from './fixtures/simple-trip.json' with { type: 'json' };
 
 function readFileSync(name) {
-  return fs.readFileSync(path.resolve(__dirname, name), 'utf8');
+  return fs.readFileSync(path.resolve(import.meta.dirname, name), 'utf8');
 }
 
-/* global TextDecoder */
 const decoder = new TextDecoder();
 
 /**
@@ -19,37 +22,34 @@ function compareLines(actual, expected) {
     return !line.startsWith('DTSTAMP');
   }
 
-  actual = Array.from(actual).map(x => decoder.decode(x)).join('');
+  actual = Array.from(actual)
+    .map(x => decoder.decode(x))
+    .join('');
 
-  actual.should.endWith('\r\n');
+  assert(actual.endsWith('\r\n'), `${actual.slice(-10)} should end with \\r\\n`);
 
   actual = actual.split('\r\n').filter(notStamp);
   expected = expected.split('\r\n').filter(notStamp);
 
   for (let i = 0; i < actual.length; i += 1) {
-    actual[i].should.eql(expected[i], `line: ${i}`);
+    assert.equal(actual[i], expected[i], `line: ${i}`);
   }
 
-  actual.should.have.length(expected.length);
+  assert.equal(actual.length, expected.length, 'line count');
 }
 
-
-describe('ical', function () {
-
-  it('simple trip', function () {
-    const t = require('./fixtures/simple-trip.json');
-    const generated = ical(t);
+describe('ical', () => {
+  it('simple trip', () => {
+    const generated = ical(simpleTrip);
     const expected = readFileSync('fixtures/simple.ics');
 
     compareLines(generated, expected);
   });
 
-  it('multi trip', function () {
-    const t = require('./fixtures/multi-trip.json');
-    const generated = ical(t);
+  it('multi trip', () => {
+    const generated = ical(multiTrip);
     const expected = readFileSync('fixtures/multi.ics');
 
     compareLines(generated, expected);
   });
-
 });
