@@ -1,4 +1,13 @@
 
+3.0.0 / 2025-05-25
+==================
+
+ * update `uuid` to ~11
+ * transition to ESM format
+ * use `biome` as a linter and formatter
+ * simplify date/time formating
+ * remove `should` dependency
+
 2.0.5 / 2024-04-18
 ==================
 
