@@ -1,4 +1,13 @@
 
+3.0.1 / 2026-01-31
+==================
+
+ * update github actions
+ * upgrade `uuid` to ~13
+ * upgrade `biome` to 2.3.13
+ * add TZID property to date-time if available
+ * remove unused jshint config
+
 3.0.0 / 2025-05-25
 ==================
 
