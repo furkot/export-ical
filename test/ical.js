@@ -46,6 +46,13 @@ describe('ical', () => {
     compareLines(generated, expected);
   });
 
+  it('simple trip with TZID', () => {
+    const generated = ical({ ...simpleTrip, options: { tzid: true } });
+    const expected = readFileSync('fixtures/simple_tz.ics');
+
+    compareLines(generated, expected);
+  });
+
   it('multi trip', () => {
     const generated = ical(multiTrip);
     const expected = readFileSync('fixtures/multi.ics');
